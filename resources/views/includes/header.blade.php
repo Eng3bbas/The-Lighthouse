@@ -24,7 +24,7 @@
                                     <ul>
                                         @foreach($categoryService->limitCategories(5) as $category)
                                             <li><a
-                                                    href="{{route("categories.index",['id' => $category->id])}}">{{$category->name}}<i></i></a>
+                                                    href="{{route("categories.show",['id' => $category->id])}}">{{$category->name}}<i></i></a>
                                             </li>
                                         @endforeach
                                     </ul>
@@ -129,7 +129,7 @@
                     <a href="">Categories<i class="fa fa-angle-down"></i></a>
                     <ul class="page_menu_selection menu_mm">
                         @foreach($categoryService->limitCategories(5) as $category)
-                        <li class="page_menu_item menu_mm"><a href="{{route("categories.show",['id' => $category->id])}}">{{$category->name}}<i class="fa fa-angle-down"></i></a></li>
+                        <li class="page_menu_item menu_mm"><a href="{{route("categories.show",['id' =>$category->id])}}">{{$category->name}}<i class="fa fa-angle-down"></i></a></li>
                             @endforeach
                     </ul>
                 </li>
