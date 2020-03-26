@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Casts\ImageCast;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -73,7 +74,8 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'id' => 'int'
+        'id' => 'int',
+        'avatar' => ImageCast::class
     ];
 
     public function setPasswordAttribute(string $password = '')

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Casts\ImageCast;
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -38,7 +39,10 @@ class Product extends Model
 {
     protected $with = ['category'];
     protected $guarded = ['id'];
-    protected $casts = ['price' => 'int'];
+    protected $casts = [
+        'price' => 'int',
+        'image' => ImageCast::class
+    ];
     public function category()
     {
         return $this->belongsTo(Category::class);

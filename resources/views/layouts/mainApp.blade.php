@@ -1,54 +1,97 @@
-<html lang="en"><head>
-    <title>{{str_replace('-',' ',env("APP_NAME"))}}</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Sublime project">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{$appName = str_replace('-',' ',config('app.name'))}} | {{$title ?? 'Page'}}</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    @yield("styles")
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="/images/icons/favicon.png"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/fonts/themify/themify-icons.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/fonts/elegant-font/html-css/style.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/slick/slick.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/vendor/lightbox2/css/lightbox.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <!--===============================================================================================-->
 </head>
-<body>
-
-<div class="super_container">
-    @include("includes.header")
+<body class="animsition">
+    @include("partials.header")
     @yield("content")
-    <div class="footer_overlay"></div>
-    <footer class="footer">
-        <div class="footer_background" style="background-image:url(images/footer.jpg)"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="footer_content d-flex flex-lg-row flex-column align-items-center justify-content-lg-start justify-content-center">
-                        <div class="footer_logo"><a href="#">Sublime.</a></div>
-                        <div class="copyright ml-auto mr-auto"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright ©<script>document.write(new Date().getFullYear());</script>2020 All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
-                        <div class="footer_social ml-lg-auto">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    @include("partials.footer")
+    <!-- Back to top -->
+    <div class="btn-back-to-top bg0-hov" id="myBtn">
+		<span class="symbol-btn-back-to-top">
+			<i class="fa fa-angle-double-up" aria-hidden="true"></i>
+		</span>
+    </div>
 
-    <script src="{{asset("/js/jquery-3.2.1.min.js")}}"></script>
-    <script src="{{asset("/styles/bootstrap4/popper.js")}}"></script>
-    <script src="{{asset("/styles/bootstrap4/bootstrap.min.js")}}"></script>
-    <script src="{{asset("/plugins/greensock/TweenMax.min.js")}}"></script>
-    <script src="{{asset("/plugins/greensock/TimelineMax.min.js")}}"></script>
-    <script src="{{asset("/plugins/scrollmagic/ScrollMagic.min.js")}}"></script>
-    <script src="{{asset('/plugins/greensock/animation.gsap.min.js')}}"></script>
-    <script src="{{asset("/plugins/greensock/ScrollToPlugin.min.js")}}"></script>
-    <script src="{{asset("/plugins/OwlCarousel2-2.2.1/owl.carousel.js")}}"></script>
-    <script src="{{asset("/plugins/Isotope/isotope.pkgd.min.js")}}"></script>
-    <script src="{{asset("/plugins/easing/easing.js")}}"></script>
-    <script src="{{asset("/plugins/parallax-js-master/parallax.min.js")}}"></script>
-    <script src="{{asset("/js/custom.js")}}"></script>
-</div>
+    <!-- Container Selection1 -->
+    <div id="dropDownSelect1"></div>
+
+
+
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="/vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="/vendor/bootstrap/js/popper.js"></script>
+    <script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="/vendor/select2/select2.min.js"></script>
+    <script type="text/javascript">
+        $(".selection-1").select2({
+            minimumResultsForSearch: 20,
+            dropdownParent: $('#dropDownSelect1')
+        });
+    </script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="/vendor/slick/slick.min.js"></script>
+    <script type="text/javascript" src="/js/slick-custom.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="/vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="/vendor/lightbox2/js/lightbox.min.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="/vendor/sweetalert/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        $('.block2-btn-addcart').each(function(){
+            var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+            $(this).on('click', function(){
+                swal(nameProduct, "is added to cart !", "success");
+            });
+        });
+
+        $('.block2-btn-addwishlist').each(function(){
+            var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+            $(this).on('click', function(){
+                swal(nameProduct, "is added to wishlist !", "success");
+            });
+        });
+    </script>
+
+    <!--===============================================================================================-->
+    <script src="/js/main.js"></script>
 </body>
 </html>

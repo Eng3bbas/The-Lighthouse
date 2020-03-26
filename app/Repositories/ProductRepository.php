@@ -49,8 +49,6 @@ class ProductRepository implements IProductRepository
     public function update(int $id, array $data): bool
     {
         $product = $this->findOrFail($id);
-        if ($product->image !==  env("NO_IMAGE_NAME") && isset($data['image']))
-            Storage::delete($product->image);
         return $product->update($data);
     }
 
@@ -71,8 +69,6 @@ class ProductRepository implements IProductRepository
     public function delete(int $id) : void
     {
         $product = $this->findOrFail($id);
-        if ($product->image !==  env("NO_IMAGE_NAME") || !empty($product->image))
-            Storage::delete($product->image);
         $product->delete();
     }
     public function findByCategoryId(int $categoryId)

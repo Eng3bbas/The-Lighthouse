@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factory;
 $factory->define(Order::class, function (Faker $faker) {
     return [
         'user_id' => app()->runningUnitTests()
-            ?  1
+            ?  User::first()->id
             : factory(User::class)->create()->id,
         'address' => $faker->address,
         'notes' => $faker->paragraph,

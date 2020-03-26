@@ -18,6 +18,9 @@ class ProductTest extends TestCase
 {
     use RefreshDatabase , WithFaker,WithAuthentication;
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|mixed
+     */
     private function createCategory()
     {
         return factory(Category::class)->create();
@@ -129,7 +132,7 @@ class ProductTest extends TestCase
     public function testGetProductsByCategoryId()
     {
         $category = $this->createCategory();
-        factory(Product::class,20)->create(['user_id' => $this->user->id , 'category_id' => $category->id]);
+        factory(Product::class,25)->create(['user_id' => $this->user->id , 'category_id' => $category->id]);
         $response = $this->get($route = route('products.by-category',['categoryId' => $category->id]));
         $response->assertDontSee('No Products');
         $response->assertSee($route."?page=2");

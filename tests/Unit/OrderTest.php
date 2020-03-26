@@ -25,7 +25,8 @@ class OrderTest extends TestCase
 
         $products = factory(Product::class,10)->create([
             'user_id' => $this->user->id,
-            'category_id' => factory(Category::class)->create()->id
+            'category_id' => factory(Category::class)->create()->id,
+            'image' => null
         ]);
         foreach ($products as $product) {
             Cart::add($product->id,$product->name,$product->price,rand(1,10))->associate(Product::class);

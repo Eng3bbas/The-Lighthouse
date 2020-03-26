@@ -6,11 +6,17 @@ namespace App\Services;
 
 use App\Repositories\IProductRepository;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 
 class ProductService
 {
     use ServiceHelpers;
     private IProductRepository $repository;
+
+    private function uploadProductImage(UploadedFile $file)
+    {
+        return $file->hashName("products/");
+    }
     public function __construct(IProductRepository $repository)
     {
         $this->repository = $repository;
@@ -28,10 +34,8 @@ class ProductService
         $data = $request->only(['name','price','category_id']);
         $data['image'] = env("NO_IMAGE_NAME");
         $data['user_id'] = auth()->id();
-        if ($request->hasFile('image')){
-            $file = $request->file('image');
-            $data['image'] = $file->hashName("products/");
-        }
+        if ($request->hasFile('image'))
+            $data['image'] = $this->uploadProductImage($request->file('image'));
         return $this->repository->create($data);
     }
 
@@ -46,10 +50,8 @@ class ProductService
         $this->idValidator($id);
         abort_if(!auth()->user()->can("update",$this->repository->show($id)),403,'You are not an admin');
         $data = $request->only(['name','price','category_id']);
-        if ($request->hasFile('image')){
-            $file = $request->file('image');
-            $data['image'] = $file->hashName("products/");
-        }
+        if ($request->hasFile('image'))
+            $data['image'] = $this->uploadProductImage($request->file('image'));
         return $this->repository->update($id,$data);
     }
 

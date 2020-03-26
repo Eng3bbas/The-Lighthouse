@@ -16,7 +16,7 @@ interface IOrderRepository
 
     public function delete(int $id) : void;
 
-    public function update(int $id , array $data):bool ;
+    public function update(int $id , array $data) : bool ;
 
     public function getByUserId(int $id);
 }

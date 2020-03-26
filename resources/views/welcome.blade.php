@@ -1,295 +1,560 @@
-@extends("layouts.mainApp")
-@section("styles")
-    <x-styles-loader :styles="[
-    '/styles/main_styles',
-    '/styles/responsive'
-    ]"></x-styles-loader>
-@endsection
+@extends("layouts.mainApp",['title' => "HomePage"])
 @section("content")
+    <!-- Slide1 -->
+    <section class="slide1">
+        <div class="wrap-slick1">
+            <div class="slick1">
+                <div class="item-slick1 item1-slick1" style="background-image: url(images/master-slide-02.jpg);">
+                    <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
+						<span class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="fadeInDown">
+							Women Collection 2018
+						</span>
 
-    <!-- Home -->
+                        <h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="fadeInUp">
+                            New arrivals
+                        </h2>
 
-    <div class="home">
-        <div class="home_slider_container">
+                        <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
+                            <!-- Button -->
+                            <a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+                                Shop Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="owl-carousel owl-theme home_slider owl-loaded owl-drag">
+                <div class="item-slick1 item2-slick1" style="background-image: url(images/master-slide-03.jpg);">
+                    <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
+						<span class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="rollIn">
+							Women Collection 2018
+						</span>
 
-                <!-- Slider Item -->
+                        <h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="lightSpeedIn">
+                            New arrivals
+                        </h2>
 
+                        <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="slideInUp">
+                            <!-- Button -->
+                            <a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+                                Shop Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-                <!-- Slider Item -->
+                <div class="item-slick1 item3-slick1" style="background-image: url(images/master-slide-04.jpg);">
+                    <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
+						<span class="caption1-slide1 m-text1 t-center animated visible-false m-b-15" data-appear="rotateInDownLeft">
+							Women Collection 2018
+						</span>
 
+                        <h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="rotateInUpRight">
+                            New arrivals
+                        </h2>
 
-                <!-- Slider Item -->
+                        <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="rotateIn">
+                            <!-- Button -->
+                            <a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+                                Shop Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
+            </div>
+        </div>
+    </section>
 
-                <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-4664px, 0px, 0px); transition: all 1.2s ease 0s; width: 8162px;"><div class="owl-item cloned" style="width: 1166px;"><div class="owl-item home_slider_item">
-                                <div class="home_slider_background" style="background-image:url({{asset("/images/home_slider_1.jpg")}})"></div>
-                                <div class="home_slider_content_container">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="home_slider_content" data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
-                                                    <div class="home_slider_title">A new Online Shop experience.</div>
-                                                    <div class="home_slider_subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.</div>
-                                                    <div class="button button_light home_button"><a href="#">Shop Now</a></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div></div><div class="owl-item cloned" style="width: 1166px;"><div class="owl-item home_slider_item">
-                                <div class="home_slider_background" style="background-image:url({{asset("/images/home_slider_1.jpg")}})"></div>
-                                <div class="home_slider_content_container">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="home_slider_content" data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
-                                                    <div class="home_slider_title">A new Online Shop experience.</div>
-                                                    <div class="home_slider_subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.</div>
-                                                    <div class="button button_light home_button"><a href="#">Shop Now</a></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div></div><div class="owl-item" style="width: 1166px;"><div class="owl-item home_slider_item">
-                                <div class="home_slider_background" style="background-image:url({{asset("/images/home_slider_1.jpg")}})"></div>
-                                <div class="home_slider_content_container">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="home_slider_content" data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
-                                                    <div class="home_slider_title">A new Online Shop experience.</div>
-                                                    <div class="home_slider_subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.</div>
-                                                    <div class="button button_light home_button"><a href="#">Shop Now</a></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div></div><div class="owl-item" style="width: 1166px;"><div class="owl-item home_slider_item">
-                                <div class="home_slider_background" style="background-image:url({{asset("/images/home_slider_1.jpg")}})"></div>
-                                <div class="home_slider_content_container">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="home_slider_content animated animate-out fadeOut" data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
-                                                    <div class="home_slider_title">A new Online Shop experience.</div>
-                                                    <div class="home_slider_subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.</div>
-                                                    <div class="button button_light home_button"><a href="#">Shop Now</a></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div></div><div class="owl-item active" style="width: 1166px;"><div class="owl-item home_slider_item">
-                                <div class="home_slider_background" style="background-image:url({{asset("/images/home_slider_1.jpg")}})"></div>
-                                <div class="home_slider_content_container">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="home_slider_content animated fadeIn" data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
-                                                    <div class="home_slider_title">A new Online Shop experience.</div>
-                                                    <div class="home_slider_subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.</div>
-                                                    <div class="button button_light home_button"><a href="#">Shop Now</a></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div></div><div class="owl-item cloned" style="width: 1166px;"><div class="owl-item home_slider_item">
-                                <div class="home_slider_background" style="background-image:url({{asset("/images/home_slider_1.jpg")}})"></div>
-                                <div class="home_slider_content_container">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="home_slider_content" data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
-                                                    <div class="home_slider_title">A new Online Shop experience.</div>
-                                                    <div class="home_slider_subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.</div>
-                                                    <div class="button button_light home_button"><a href="#">Shop Now</a></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div></div><div class="owl-item cloned" style="width: 1166px;"><div class="owl-item home_slider_item">
-                                <div class="home_slider_background" style="background-image:url({{asset("/images/home_slider_1.jpg")}})"></div>
-                                <div class="home_slider_content_container">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col">
-                                                <div class="home_slider_content" data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
-                                                    <div class="home_slider_title">A new Online Shop experience.</div>
-                                                    <div class="home_slider_subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.</div>
-                                                    <div class="button button_light home_button"><a href="#">Shop Now</a></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div></div></div></div><div class="owl-nav disabled"><div class="owl-prev">prev</div><div class="owl-next">next</div></div><div class="owl-dots"><div class="owl-dot"><span></span></div><div class="owl-dot"><span></span></div><div class="owl-dot active"><span></span></div></div></div>
-            <div class="home_slider_dots_container">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="home_slider_dots">
-                                <ul id="home_slider_custom_dots" class="home_slider_custom_dots">
-                                    <li class="home_slider_custom_dot active">01.</li>
-                                    <li class="home_slider_custom_dot">02.</li>
-                                    <li class="home_slider_custom_dot">03.</li>
-                                </ul>
+    <!-- Banner -->
+    <section class="banner bgwhite p-t-40 p-b-40">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
+                    <!-- block1 -->
+                    <div class="block1 hov-img-zoom pos-relative m-b-30">
+                        <img src="images/banner-02.jpg" alt="IMG-BENNER">
+
+                        <div class="block1-wrapbtn w-size2">
+                            <!-- Button -->
+                            <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                                Dresses
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- block1 -->
+                    <div class="block1 hov-img-zoom pos-relative m-b-30">
+                        <img src="images/banner-05.jpg" alt="IMG-BENNER">
+
+                        <div class="block1-wrapbtn w-size2">
+                            <!-- Button -->
+                            <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                                Sunglasses
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
+                    <!-- block1 -->
+                    <div class="block1 hov-img-zoom pos-relative m-b-30">
+                        <img src="images/banner-03.jpg" alt="IMG-BENNER">
+
+                        <div class="block1-wrapbtn w-size2">
+                            <!-- Button -->
+                            <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                                Watches
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- block1 -->
+                    <div class="block1 hov-img-zoom pos-relative m-b-30">
+                        <img src="images/banner-07.jpg" alt="IMG-BENNER">
+
+                        <div class="block1-wrapbtn w-size2">
+                            <!-- Button -->
+                            <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                                Footerwear
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
+                    <!-- block1 -->
+                    <div class="block1 hov-img-zoom pos-relative m-b-30">
+                        <img src="images/banner-04.jpg" alt="IMG-BENNER">
+
+                        <div class="block1-wrapbtn w-size2">
+                            <!-- Button -->
+                            <a href="#" class="flex-c-m size2 m-text2 bg3 hov1 trans-0-4">
+                                Bags
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- block2 -->
+                    <div class="block2 wrap-pic-w pos-relative m-b-30">
+                        <img src="images/icons/bg-01.jpg" alt="IMG">
+
+                        <div class="block2-content sizefull ab-t-l flex-col-c-m">
+                            <h4 class="m-text4 t-center w-size3 p-b-8">
+                                Sign up & get 20% off
+                            </h4>
+
+                            <p class="t-center w-size4">
+                                Be the frist to know about the latest fashion news and get exclu-sive offers
+                            </p>
+
+                            <div class="w-size2 p-t-25">
+                                <!-- Button -->
+                                <a href="#" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
+                                    Sign Up
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Ads -->
+    <!-- New Product -->
+    <section class="newproduct bgwhite p-t-45 p-b-105">
+        <div class="container">
+            <div class="sec-title p-b-60">
+                <h3 class="m-text5 t-center">
+                    Featured Products
+                </h3>
+            </div>
 
-    <div class="avds">
-        <div class="avds_container d-flex flex-lg-row flex-column align-items-start justify-content-between">
-            <div class="avds_small">
-                <div class="avds_background" style="background-image:url(images/avds_small.jpg)"></div>
-                <div class="avds_small_inner">
-                    <div class="avds_discount_container">
-                        <img src="images/discount.png" alt="">
-                        <div>
-                            <div class="avds_discount">
-                                <div>20<span>%</span></div>
-                                <div>Discount</div>
+            <!-- Slide2 -->
+            <div class="wrap-slick2">
+                <div class="slick2">
+                    @forelse($products as $product)
+                    <div class="item-slick2 p-l-15 p-r-15">
+                        <!-- Block2 -->
+                        <div class="block2">
+{{--                            @dd($product)--}}
+                            @if(file_exists(public_path("storage/" . $product->image)))
+                                <script>alert({{$product->image}})</script>
+                                @endif
+                            <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
+                                <img src="{{asset("storage/" . ($product->image ?? env("NO_IMAGE_NAME")))}}" alt="IMG-PRODUCT">
+
+                                <div class="block2-overlay trans-0-4">
+                                    <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
+                                        <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
+                                        <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
+                                    </a>
+
+                                    <div class="block2-btn-addcart w-size1 trans-0-4">
+                                        <form action="{{route("cart.add")}}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{$product->id}}">
+                                            <!-- Button -->
+                                            <button type="submit" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                                Add to Cart
+                                            </button>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="block2-txt p-t-20">
+                                <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
+                                    {{$product->name}}
+                                </a>
+                                <a href="{{route("products.by-category",['categoryId' => $product->category_id])}}" class="block2-name dis-block s-text3 p-b-5">
+                                    {{$product->category->name}}
+                                </a>
+                                <span class="block2-price m-text6 p-r-5">
+									${{$product->price}}
+								</span>
                             </div>
                         </div>
                     </div>
-                    <div class="avds_small_content">
-                        <div class="avds_title">Smart Phones</div>
-                        <div class="avds_link"><a href="categories.html">See More</a></div>
-                    </div>
+                        @empty
+                            <h1>No Products</h1>
+                        @endforelse
                 </div>
             </div>
-            <div class="avds_large">
-                <div class="avds_background" style="background-image:url(images/avds_large.jpg)"></div>
-                <div class="avds_large_container">
-                    <div class="avds_large_content">
-                        <div class="avds_title">Professional Cameras</div>
-                        <div class="avds_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a
-                            ultricies metus. Sed nec molestie eros. Sed viver ra velit venenatis fermentum luctus.
+
+        </div>
+    </section>
+
+    <!-- Banner2 -->
+    <section class="banner2 bg5 p-t-55 p-b-55">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10 col-md-8 col-lg-6 m-l-r-auto p-t-15 p-b-15">
+                    <div class="hov-img-zoom pos-relative">
+                        <img src="images/banner-08.jpg" alt="IMG-BANNER">
+
+                        <div class="ab-t-l sizefull flex-col-c-m p-l-15 p-r-15">
+							<span class="m-text9 p-t-45 fs-20-sm">
+								The Beauty
+							</span>
+
+                            <h3 class="l-text1 fs-35-sm">
+                                Lookbook
+                            </h3>
+
+                            <a href="#" class="s-text4 hov2 p-t-20 ">
+                                View Collection
+                            </a>
                         </div>
-                        <div class="avds_link avds_link_large"><a href="categories.html">See More</a></div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Products -->
+                <div class="col-sm-10 col-md-8 col-lg-6 m-l-r-auto p-t-15 p-b-15">
+                    <div class="bgwhite hov-img-zoom pos-relative p-b-20per-ssm">
+                        <img src="images/shop-item-09.jpg" alt="IMG-BANNER">
 
-    <div class="products">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <x-all-products :products="$products"></x-all-products>
-                </div>
+                        <div class="ab-t-l sizefull flex-col-c-b p-l-15 p-r-15 p-b-20">
+                            <div class="t-center">
+                                <a href="product-detail.html" class="dis-block s-text3 p-b-5">
+                                    Gafas sol Hawkers one
+                                </a>
 
-            </div>
-        </div>
-    </div>
+                                <span class="block2-oldprice m-text7 p-r-5">
+									$29.50
+								</span>
 
-    <!-- Ad -->
-
-    <div class="avds_xl">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="avds_xl_container clearfix">
-                        <div class="avds_xl_background" style="background-image:url(images/avds_xl.jpg)"></div>
-                        <div class="avds_xl_content">
-                            <div class="avds_title">Amazing Devices</div>
-                            <div class="avds_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a
-                                ultricies metus.
+                                <span class="block2-newprice m-text8">
+									$15.90
+								</span>
                             </div>
-                            <div class="avds_link avds_xl_link"><a href="categories.html">See More</a></div>
+
+                            <div class="flex-c-m p-t-44 p-t-30-xl">
+                                <div class="flex-col-c-m size3 bo1 m-l-5 m-r-5">
+									<span class="m-text10 p-b-1 days">
+										69
+									</span>
+
+                                    <span class="s-text5">
+										days
+									</span>
+                                </div>
+
+                                <div class="flex-col-c-m size3 bo1 m-l-5 m-r-5">
+									<span class="m-text10 p-b-1 hours">
+										04
+									</span>
+
+                                    <span class="s-text5">
+										hrs
+									</span>
+                                </div>
+
+                                <div class="flex-col-c-m size3 bo1 m-l-5 m-r-5">
+									<span class="m-text10 p-b-1 minutes">
+										32
+									</span>
+
+                                    <span class="s-text5">
+										mins
+									</span>
+                                </div>
+
+                                <div class="flex-col-c-m size3 bo1 m-l-5 m-r-5">
+									<span class="m-text10 p-b-1 seconds">
+										05
+									</span>
+
+                                    <span class="s-text5">
+										secs
+									</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Icon Boxes -->
 
-    <div class="icon_boxes">
+    <!-- Blog -->
+    <section class="blog bgwhite p-t-94 p-b-65">
         <div class="container">
-            <div class="row icon_box_row">
+            <div class="sec-title p-b-52">
+                <h3 class="m-text5 t-center">
+                    Our Blog
+                </h3>
+            </div>
 
-                <!-- Icon Box -->
-                <div class="col-lg-4 icon_box_col">
-                    <div class="icon_box">
-                        <div class="icon_box_image"><img src="images/icon_1.svg" alt=""></div>
-                        <div class="icon_box_title">Free Shipping Worldwide</div>
-                        <div class="icon_box_text">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed
-                                nec molestie.</p>
+            <div class="row">
+                <div class="col-sm-10 col-md-4 p-b-30 m-l-r-auto">
+                    <!-- Block3 -->
+                    <div class="block3">
+                        <a href="blog-detail.html" class="block3-img dis-block hov-img-zoom">
+                            <img src="images/blog-01.jpg" alt="IMG-BLOG">
+                        </a>
+
+                        <div class="block3-txt p-t-14">
+                            <h4 class="p-b-7">
+                                <a href="blog-detail.html" class="m-text11">
+                                    Black Friday Guide: Best Sales & Discount Codes
+                                </a>
+                            </h4>
+
+                            <span class="s-text6">By</span> <span class="s-text7">Nancy Ward</span>
+                            <span class="s-text6">on</span> <span class="s-text7">July 22, 2017</span>
+
+                            <p class="s-text8 p-t-16">
+                                Duis ut velit gravida nibh bibendum commodo. Sus-pendisse pellentesque mattis augue id euismod. Inter-dum et malesuada fames
+                            </p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Icon Box -->
-                <div class="col-lg-4 icon_box_col">
-                    <div class="icon_box">
-                        <div class="icon_box_image"><img src="images/icon_2.svg" alt=""></div>
-                        <div class="icon_box_title">Free Returns</div>
-                        <div class="icon_box_text">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed
-                                nec molestie.</p>
+                <div class="col-sm-10 col-md-4 p-b-30 m-l-r-auto">
+                    <!-- Block3 -->
+                    <div class="block3">
+                        <a href="blog-detail.html" class="block3-img dis-block hov-img-zoom">
+                            <img src="images/blog-02.jpg" alt="IMG-BLOG">
+                        </a>
+
+                        <div class="block3-txt p-t-14">
+                            <h4 class="p-b-7">
+                                <a href="blog-detail.html" class="m-text11">
+                                    The White Sneakers Nearly Every Fashion Girls Own
+                                </a>
+                            </h4>
+
+                            <span class="s-text6">By</span> <span class="s-text7">Nancy Ward</span>
+                            <span class="s-text6">on</span> <span class="s-text7">July 18, 2017</span>
+
+                            <p class="s-text8 p-t-16">
+                                Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit ame
+                            </p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Icon Box -->
-                <div class="col-lg-4 icon_box_col">
-                    <div class="icon_box">
-                        <div class="icon_box_image"><img src="images/icon_3.svg" alt=""></div>
-                        <div class="icon_box_title">24h Fast Support</div>
-                        <div class="icon_box_text">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed
-                                nec molestie.</p>
+                <div class="col-sm-10 col-md-4 p-b-30 m-l-r-auto">
+                    <!-- Block3 -->
+                    <div class="block3">
+                        <a href="blog-detail.html" class="block3-img dis-block hov-img-zoom">
+                            <img src="images/blog-03.jpg" alt="IMG-BLOG">
+                        </a>
+
+                        <div class="block3-txt p-t-14">
+                            <h4 class="p-b-7">
+                                <a href="blog-detail.html" class="m-text11">
+                                    New York SS 2018 Street Style: Annina Mislin
+                                </a>
+                            </h4>
+
+                            <span class="s-text6">By</span> <span class="s-text7">Nancy Ward</span>
+                            <span class="s-text6">on</span> <span class="s-text7">July 2, 2017</span>
+
+                            <p class="s-text8 p-t-16">
+                                Proin nec vehicula lorem, a efficitur ex. Nam vehicula nulla vel erat tincidunt, sed hendrerit ligula porttitor. Fusce sit amet maximus nunc
+                            </p>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Newsletter -->
+    <!-- Instagram -->
+    <section class="instagram p-t-20">
+        <div class="sec-title p-b-52 p-l-15 p-r-15">
+            <h3 class="m-text5 t-center">
+                @ follow us on Instagram
+            </h3>
+        </div>
 
-    <div class="newsletter">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <div class="newsletter_border"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-8 offset-lg-2">
-                    <div class="newsletter_content text-center">
-                        <div class="newsletter_title">Subscribe to our newsletter</div>
-                        <div class="newsletter_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                                a ultricies metus. Sed nec molestie eros</p></div>
-                        <div class="newsletter_form_container">
-                            <form action="#" id="newsletter_form" class="newsletter_form">
-                                <input type="email" class="newsletter_input" required="required">
-                                <button class="newsletter_button trans_200"><span>Subscribe</span></button>
-                            </form>
-                        </div>
+        <div class="flex-w">
+            <!-- Block4 -->
+            <div class="block4 wrap-pic-w">
+                <img src="images/gallery-03.jpg" alt="IMG-INSTAGRAM">
+
+                <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
+					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
+						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
+						<span class="p-t-2">39</span>
+					</span>
+
+                    <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
+                        <p class="s-text10 m-b-15 h-size1 of-hidden">
+                            Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit amet enim orci. Nam eget metus elit.
+                        </p>
+
+                        <span class="s-text9">
+							Photo by @nancyward
+						</span>
                     </div>
-                </div>
+                </a>
+            </div>
+
+            <!-- Block4 -->
+            <div class="block4 wrap-pic-w">
+                <img src="images/gallery-07.jpg" alt="IMG-INSTAGRAM">
+
+                <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
+					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
+						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
+						<span class="p-t-2">39</span>
+					</span>
+
+                    <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
+                        <p class="s-text10 m-b-15 h-size1 of-hidden">
+                            Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit amet enim orci. Nam eget metus elit.
+                        </p>
+
+                        <span class="s-text9">
+							Photo by @nancyward
+						</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Block4 -->
+            <div class="block4 wrap-pic-w">
+                <img src="images/gallery-09.jpg" alt="IMG-INSTAGRAM">
+
+                <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
+					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
+						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
+						<span class="p-t-2">39</span>
+					</span>
+
+                    <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
+                        <p class="s-text10 m-b-15 h-size1 of-hidden">
+                            Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit amet enim orci. Nam eget metus elit.
+                        </p>
+
+                        <span class="s-text9">
+							Photo by @nancyward
+						</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Block4 -->
+            <div class="block4 wrap-pic-w">
+                <img src="images/gallery-13.jpg" alt="IMG-INSTAGRAM">
+
+                <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
+					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
+						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
+						<span class="p-t-2">39</span>
+					</span>
+
+                    <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
+                        <p class="s-text10 m-b-15 h-size1 of-hidden">
+                            Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit amet enim orci. Nam eget metus elit.
+                        </p>
+
+                        <span class="s-text9">
+							Photo by @nancyward
+						</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Block4 -->
+            <div class="block4 wrap-pic-w">
+                <img src="images/gallery-15.jpg" alt="IMG-INSTAGRAM">
+
+                <a href="#" class="block4-overlay sizefull ab-t-l trans-0-4">
+					<span class="block4-overlay-heart s-text9 flex-m trans-0-4 p-l-40 p-t-25">
+						<i class="icon_heart_alt fs-20 p-r-12" aria-hidden="true"></i>
+						<span class="p-t-2">39</span>
+					</span>
+
+                    <div class="block4-overlay-txt trans-0-4 p-l-40 p-r-25 p-b-30">
+                        <p class="s-text10 m-b-15 h-size1 of-hidden">
+                            Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit amet enim orci. Nam eget metus elit.
+                        </p>
+
+                        <span class="s-text9">
+							Photo by @nancyward
+						</span>
+                    </div>
+                </a>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Footer -->
+    <!-- Shipping -->
+    <section class="shipping bgwhite p-t-62 p-b-46">
+        <div class="flex-w p-l-15 p-r-15">
+            <div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 respon1">
+                <h4 class="m-text12 t-center">
+                    Free Delivery Worldwide
+                </h4>
+
+                <a href="#" class="s-text11 t-center">
+                    Click here for more info
+                </a>
+            </div>
+
+            <div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 bo2 respon2">
+                <h4 class="m-text12 t-center">
+                    30 Days Return
+                </h4>
+
+                <span class="s-text11 t-center">
+					Simply return it within 30 days for an exchange.
+				</span>
+            </div>
+
+            <div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 respon1">
+                <h4 class="m-text12 t-center">
+                    Store Opening
+                </h4>
+
+                <span class="s-text11 t-center">
+					Shop open from Monday to Sunday
+				</span>
+            </div>
+        </div>
+    </section>
 @endsection

@@ -29,7 +29,7 @@ class CartController extends Controller
             $request->input('id'),
             $request->input('quantity', 1)
         );
-        return redirect('/');
+        return redirect()->back();
     }
 
     /**

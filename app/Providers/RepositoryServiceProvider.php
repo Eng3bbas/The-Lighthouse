@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use App\Repositories;
 class RepositoryServiceProvider extends ServiceProvider
 {
-    private array $repositories = [
+    public array $singletons = [
         Repositories\IUserRepository::class => Repositories\UserRepository::class,
         Repositories\IProductRepository::class => Repositories\ProductRepository::class,
         Repositories\ICategoryRepository::class => Repositories\CategoryRepository::class,
@@ -19,9 +19,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        foreach ($this->repositories as $abstract => $concrete) {
-            $this->app->singleton($abstract,$concrete);
-        }
+
     }
 
     /**

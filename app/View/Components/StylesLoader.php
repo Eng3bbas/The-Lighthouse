@@ -33,4 +33,5 @@ class StylesLoader extends Component
     {
         return view('components.styles-loader');
     }
+
 }

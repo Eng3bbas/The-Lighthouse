@@ -6,6 +6,7 @@ namespace App\Services;
 
 use App\Repositories\ICategoryRepository;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 
 class CategoryService
 {
@@ -16,6 +17,10 @@ class CategoryService
         $this->repository = $repository;
     }
 
+    private function uploadCategoryImage(UploadedFile $file)
+    {
+        return $file->hashName("categories/");
+    }
     public function all()
     {
         return $this->repository->index();
@@ -23,7 +28,10 @@ class CategoryService
 
     public function create(Request $request)
     {
-        return $this->repository->create($request->only('name'));
+        $data = $request->only('name');
+        if ($request->hasFile('image'))
+            $data['image'] = $this->uploadCategoryImage($request->file('image'));
+        return $this->repository->create($data);
     }
 
     public function show($id)
@@ -35,7 +43,10 @@ class CategoryService
     public function update($id , Request $request)
     {
         $this->idValidator($id);
-        return $this->repository->update($id,$request->only('name'));
+        $data = $request->only('name');
+        if ($request->hasFile('image'))
+            $data['image'] = $this->uploadCategoryImage($request->file('image'));
+        return $this->repository->update($id,$data);
     }
 
     public function delete($id)

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Casts\ImageCast;
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -18,11 +19,16 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Category whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Category whereName($value)
  * @mixin \Eloquent
+ * @property \App\Casts\ImageCast|null $image
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Category whereImage($value)
  */
 class Category extends Model
 {
     public $timestamps = false;
     protected $guarded = ['id'];
+    protected $casts = [
+      'image' => ImageCast::class
+    ];
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -30,4 +36,5 @@ class Category extends Model
     {
         return $this->hasMany(Product::class);
     }
+
 }

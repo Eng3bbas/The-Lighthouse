@@ -14,9 +14,9 @@ class OrderRequest extends FormRequest
      */
     public function authorize()
     {
-        if ($this->requestUri === route("orders.store"))
-            return app(CartService::class)->hasItems();
-        return true;
+        return $this->requestUri === route("orders.store")
+            ? app(CartService::class)->hasItems()
+            : true;
     }
 
     /**

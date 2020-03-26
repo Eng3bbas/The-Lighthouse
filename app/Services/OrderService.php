@@ -5,7 +5,6 @@ namespace App\Services;
 
 
 use App\Repositories\IOrderRepository;
-use Illuminate\Http\Request;
 
 class OrderService
 {
@@ -22,9 +21,9 @@ class OrderService
 
     public function getAllOrders()
     {
-        if (auth()->user()->is_admin)
-            return $this->repository->getAllOrders();
-        return $this->repository->getByUserId(auth()->id());
+        return auth()->user()->is_admin
+            ?  $this->repository->getAllOrders()
+            : $this->repository->getByUserId(auth()->id());
     }
 
     public function store(array $additionalData)
@@ -37,9 +36,8 @@ class OrderService
         })->all();
         $additionalData['user_id'] = auth()->id();
         $additionalData['total_money'] = $this->cartService->getTotalPrice();
-        $order =  $this->repository->create($additionalData,$products);
         $this->cartService->clear();
-        return $order;
+        return $this->repository->create($additionalData,$products);
     }
 
     public function delete($id)
@@ -58,8 +56,8 @@ class OrderService
     public function show($id)
     {
         $this->idValidator($id);
-        abort_if(!auth()->user()->can("view",$this->repository->findOrFail($id)),403 ,'Your limit to update the order has ended or you are not authorized');
         $order = $this->repository->findOrFail($id);
+        abort_if(!auth()->user()->can("view",$order),403 ,'Your limit to update the order has ended or you are not authorized');
         $relations = ['products'];
         if (auth()->user()->is_admin)
             $relations[] = "user";

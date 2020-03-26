@@ -27,7 +27,7 @@ class CartService
      * @param array $conditions
      * @throws \Darryldecode\Cart\Exceptions\UnknownModelException
      */
-    public function addItem(int $id,int $quantity = null, $attributes = [], $conditions = [])
+    public function addItem(int $id,int $quantity)
     {
         $product = $this->productService->show($id);
         Cart::add(
@@ -35,8 +35,9 @@ class CartService
             $product->name,
             $product->price,
             $quantity,
-            $attributes,
-            $conditions
+            [
+                'image' => $product->image
+            ]
         )->associate('App\Product');
     }
 
@@ -65,7 +66,7 @@ class CartService
 
     public function getItemsCount()
     {
-        return Cart::getContent()->count();
+        return $this->getItems()->count();
     }
     public function isItemExists(int $id)
     {

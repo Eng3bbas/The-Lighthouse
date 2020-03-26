@@ -57,6 +57,7 @@ class OrderRepository implements IOrderRepository
      */
     public function delete(int $id) : void
     {
+       
        $this->findOrFail($id)->delete();
     }
     public function getByUserId(int $id)
