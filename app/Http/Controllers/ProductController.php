@@ -8,6 +8,7 @@ use App\Services\ProductService;
 class ProductController extends Controller
 {
     private ProductService $service;
+    private const ROUTE_NAME_DASHBOARD = 'dashboard.products';
     public function __construct(ProductService $service)
     {
         $this->service = $service;
@@ -31,7 +32,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view();
+        $categories = app('App\Services\CategoryService')->all();
+        return view('products.create',compact('categories'));
     }
 
     /**
@@ -46,7 +48,7 @@ class ProductController extends Controller
          if (app()->runningUnitTests()){
              return redirect(route('products.index'))->with('productImg',$product->image);
          }
-        return redirect(route('products.index'));
+        return redirect(route(self::ROUTE_NAME_DASHBOARD));
     }
 
     /**
@@ -68,13 +70,15 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-       return response()->view('products.edit',['product' => $this->service->show($id)]);
+       $categories = app('App\Services\CategoryService')->all();
+       $product = $this->service->show($id);
+       return response()->view('products.edit',compact('categories','product'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  ProductRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -83,7 +87,7 @@ class ProductController extends Controller
         $productUpdate = $this->service->update($id,$request);
         if (!$productUpdate)
             return redirect()->back()->with('errorMsg','error occurred');
-        return redirect(route('products.index'));
+        return redirect(route(self::ROUTE_NAME_DASHBOARD));
     }
 
     /**
@@ -95,7 +99,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $this->service->delete($id);
-        return redirect(route('products.index'));
+        return redirect(route(self::ROUTE_NAME_DASHBOARD));
     }
 
 }

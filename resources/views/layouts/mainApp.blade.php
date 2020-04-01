@@ -33,10 +33,12 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="/css/util.css">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <meta name="csrf-token" content="{{csrf_token()}}" id="csrf_token">
     <!--===============================================================================================-->
 </head>
 <body class="animsition">
     @include("partials.header")
+
     @yield("content")
     @include("partials.footer")
     <!-- Back to top -->
@@ -93,5 +95,6 @@
 
     <!--===============================================================================================-->
     <script src="/js/main.js"></script>
+    <script src="/js/app.js"></script>
 </body>
 </html>

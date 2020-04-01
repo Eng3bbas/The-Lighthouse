@@ -8,8 +8,7 @@ use App\Repositories\IOrderRepository;
 
 class OrderService
 {
-    use ServiceHelpers;
-
+    use ServiceHelpers,Countable;
     private IOrderRepository $repository;
     private CartService $cartService;
 
@@ -63,5 +62,10 @@ class OrderService
             $relations[] = "user";
         $order->load($relations);
         return $order;
+    }
+
+    public function getTotalMoney() : int
+    {
+        return $this->repository->getTotalCost();
     }
 }

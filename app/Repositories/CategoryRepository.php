@@ -8,6 +8,7 @@ use App\Category;
 
 class CategoryRepository implements ICategoryRepository
 {
+    use Countable;
     private Category $model;
     public function __construct(Category $model)
     {

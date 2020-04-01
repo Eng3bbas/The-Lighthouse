@@ -9,6 +9,11 @@ use function request;
 class CartController extends Controller
 {
     private CartService $service;
+
+    /**
+     * CartController constructor.
+     * @param CartService $service
+     */
     public function __construct(CartService $service)
     {
         $this->service = $service;
@@ -40,9 +45,13 @@ class CartController extends Controller
     {
         validator(['id' => $id],['id' => ['required','integer','min:1',new ProductId]])->validate();
         $this->service->deleteItem($id);
-        return redirect('/');
+        return redirect()->back();
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function updateQuantity($id)
     {
         validator(['id' => $id,'type' => $type = request('type','increment') ],[
@@ -54,6 +63,6 @@ class CartController extends Controller
             }]
         ])->validate();
         $this->service->updateQuantity($id,$type);
-        return redirect('/');
+        return redirect()->back();
     }
 }

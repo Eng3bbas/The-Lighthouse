@@ -17,5 +17,7 @@ interface ICategoryRepository
     public function findOrFail(int $id,array $columns = ['*']) : Category;
     public function update(int $id , array $data) : bool ;
     public function delete(int $id) : void ;
+    public function count(string $columns = '*') : int ;
+
 
 }

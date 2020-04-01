@@ -41,7 +41,6 @@ class Product extends Model
     protected $guarded = ['id'];
     protected $casts = [
         'price' => 'int',
-        'image' => ImageCast::class
     ];
     public function category()
     {

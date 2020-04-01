@@ -56,7 +56,7 @@ class CartTest extends TestCase
         ]);
         Cart::add($product->id,$product->name,$product->price,1);
         $response = $this->delete(route('cart.destroy', ['id' => $product->id]));
-        $response->assertRedirect('/');
+        $response->assertRedirect();
         $this->assertFalse(Cart::has($product->id), "Item is with id:[{$product->id}] found");
     }
 
@@ -67,7 +67,7 @@ class CartTest extends TestCase
             'category_id' => $this->createCategory()->id
         ]);
         Cart::add($product->id,$product->name,$product->price,1);
-        $this->patch(route('cart.update.quantity',['id' => $product->id]));
+        $this->patch(route('cart.update.quantity',['id' => $product->id]))->assertRedirect();
         $this->assertEquals(2,Cart::get($product->id)['quantity']);
     }
 
@@ -78,7 +78,7 @@ class CartTest extends TestCase
             'category_id' => $this->createCategory()->id
         ]);
         Cart::add($product->id,$product->name,$product->price,2);
-        $this->patch(route('cart.update.quantity',['id' => $product->id]),['type' => 'decrement']);
+        $this->patch(route('cart.update.quantity',['id' => $product->id]),['type' => 'decrement'])->assertRedirect();
         $this->assertEquals(1,Cart::get($product->id)['quantity']);
     }
 
@@ -90,6 +90,7 @@ class CartTest extends TestCase
         ]);
         Cart::add($product->id,$product->name,$product->price,1);
         Cart::add($product->id,$product->name,$product->price,1);
-        $this->assertEquals(2,Cart::get($product->id)['quantity']);
+        $this->assertEquals(2,Cart::get($product->id)->quantity);
+
     }
 }

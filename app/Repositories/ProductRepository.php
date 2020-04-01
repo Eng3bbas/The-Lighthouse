@@ -9,6 +9,7 @@ use Storage;
 
 class ProductRepository implements IProductRepository
 {
+    use Countable;
     private Product $model;
     public function __construct(Product $model)
     {
@@ -20,7 +21,7 @@ class ProductRepository implements IProductRepository
      */
     public function index()
     {
-        return $this->model->latest('id')->paginate(8);
+        return $this->model->with(['category','user'])->latest('id')->paginate(8);
     }
 
     /**

@@ -25,11 +25,14 @@ class ProductRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => ['required','string','unique:products','max:255'],
+        $rules = [
+            'name' => ['required','string','max:255'],
             'price' => ['required','integer','min:1'],
             'category_id' => ['required','integer',new CategoryId],
             'image' => ['nullable','image','mimes:jpg,png,jpeg']
         ];
+        if ($this->url() === $this->route('products.store'))
+            $rules['name'][] = "unique:products";
+        return $rules;
     }
 }

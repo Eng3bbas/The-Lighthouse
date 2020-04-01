@@ -10,6 +10,7 @@ use Exception;
 
 class OrderRepository implements IOrderRepository
 {
+    use Countable;
     private Order $model;
 
     public function __construct(Order $model)
@@ -19,9 +20,15 @@ class OrderRepository implements IOrderRepository
 
     public function getAllOrders()
     {
-        return $this->model->with("user")->latest("id")->paginate();
+        return $this->model->with("user")->withCount('products')->latest("id")->paginate();
     }
 
+    /**
+     * @param array $data
+     * @param array $products
+     * @return Order
+     * @throws \Throwable
+     */
     public function create(array $data, array $products) : Order
     {
         DB::beginTransaction();
@@ -38,7 +45,8 @@ class OrderRepository implements IOrderRepository
             return $order;
         }
         catch (Exception $exception){
-            abort(500,"Error occurred:" . $exception->getMessage());
+            DB::rollBack();
+            abort(500,"Error occurred: {$exception->getMessage()}" );
         }
     }
 
@@ -57,11 +65,22 @@ class OrderRepository implements IOrderRepository
      */
     public function delete(int $id) : void
     {
-       
+
        $this->findOrFail($id)->delete();
     }
     public function getByUserId(int $id)
     {
-        return $this->model->where("user_id",$id)->latest("id")->paginate();
+        return $this->model->where("user_id",$id)->withCount('products')->latest("id")->paginate();
     }
+
+
+    /**
+     * @return mixed
+     */
+    public function getTotalCost() : int
+    {
+        return $this->model->sum("total_money");
+    }
+
+
 }

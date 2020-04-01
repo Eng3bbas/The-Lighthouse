@@ -3,16 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use App\Repositories\IUserRepository;
 use App\Services\UserService;
-use App\User;
-use DB;
 use Exception;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
-use Storage;
 
 class RegisterController extends Controller
 {
@@ -29,21 +22,21 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected string $redirectTo = RouteServiceProvider::HOME;
+    protected function redirectTo()
+    {
+        return $this->guard()->user()->is_admin ?
+            route('dashboard.index') : '/';
+    }
     protected UserService $service;
+
     /**
      * Create a new controller instance.
      *
-     * @return void
+     * @param UserService $service
      */
-    public function __construct()
+    public function __construct(UserService $service)
     {
-        $this->service = app(UserService::class);
+        $this->service = $service;
         $this->middleware('guest');
     }
 
@@ -55,7 +48,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        return validator($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],

@@ -7,6 +7,7 @@ use Illuminate\Contracts\Validation\Rule;
 
 class CategoryId implements Rule
 {
+
     /**
      * Create a new rule instance.
      *
@@ -26,7 +27,7 @@ class CategoryId implements Rule
      */
     public function passes($attribute, $value)
     {
-        return Category::find($value) != null;
+        return filled(Category::find($value));
     }
 
     /**

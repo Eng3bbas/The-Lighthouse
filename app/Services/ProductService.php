@@ -3,17 +3,17 @@
 
 namespace App\Services;
 
-
 use App\Repositories\IProductRepository;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use Storage;
 
 class ProductService
 {
-    use ServiceHelpers;
+    use ServiceHelpers,Countable;
     private IProductRepository $repository;
 
-    private function uploadProductImage(UploadedFile $file)
+    private function uploadProductImage(UploadedFile $file) : string
     {
         return $file->hashName("products/");
     }
@@ -58,7 +58,7 @@ class ProductService
     public function delete($id)
     {
         $this->idValidator($id);
-        abort_if(!auth()->user()->can("delete",$this->repository->show($id)),403,'You are not an admin');
+        abort_if(!auth()->user()->can("delete",$product = $this->repository->show($id)),403,'You are not an admin');
         $this->repository->delete($id);
     }
 
@@ -67,4 +67,5 @@ class ProductService
         $this->idValidator($categoryId);
         return $this->repository->findByCategoryId($categoryId);
     }
+
 }

@@ -54,6 +54,7 @@ class CartService
     public function updateQuantity(int $id , string $updateType)
     {
         abort_if(!$this->isItemExists($id),404,"Item not found in cart with id :[{$id}]");
+        abort_if($this->getItems()->firstWhere('id',$id)->qunatity === 1 && $updateType === "decrement",403,'You can\'t decrement quantity to 0');
         Cart::update($id,[
             'quantity' => $updateType === "increment" ? 1 : -1
         ]);

@@ -19,4 +19,8 @@ interface IOrderRepository
     public function update(int $id , array $data) : bool ;
 
     public function getByUserId(int $id);
+
+    public function count(string $columns = '*') : int ;
+
+    public function getTotalCost() : int;
 }

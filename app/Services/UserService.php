@@ -10,6 +10,7 @@ use Illuminate\Support\Str;
 
 class UserService
 {
+    use Countable;
     private IUserRepository $repository;
     public function __construct(IUserRepository $repository)
     {
@@ -34,4 +35,5 @@ class UserService
         }
         $this->repository->update($id,$data);
     }
+
 }

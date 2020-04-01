@@ -10,7 +10,7 @@ use Illuminate\Http\UploadedFile;
 
 class CategoryService
 {
-    use ServiceHelpers;
+    use ServiceHelpers,Countable;
     private ICategoryRepository $repository;
     public function __construct(ICategoryRepository $repository)
     {
@@ -56,8 +56,7 @@ class CategoryService
         $this->repository->delete($id);
     }
 
-    public function limitCategories(int $limit)
-    {
-        return $this->all()->take($limit)->values();
-    }
+
+
+
 }

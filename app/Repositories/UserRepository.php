@@ -11,7 +11,7 @@ use Throwable;
 
 class UserRepository implements IUserRepository
 {
-
+    use Countable;
     private User $model;
 
     public function __construct(User $model)

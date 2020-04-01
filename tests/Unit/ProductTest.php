@@ -94,6 +94,7 @@ class ProductTest extends TestCase
             'name' => $this->faker->name,
             'price' => $this->faker->randomNumber(4),
             'category_id' => $category->id,
+            'image' => UploadedFile::fake()->image('myimg.png')
         ]);
         $response->assertRedirect(route("products.index"));
     }

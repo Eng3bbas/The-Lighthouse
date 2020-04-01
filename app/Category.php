@@ -19,16 +19,20 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Category whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Category whereName($value)
  * @mixin \Eloquent
- * @property \App\Casts\ImageCast|null $image
+ * @property string|null $image
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Category whereImage($value)
  */
 class Category extends Model
 {
+    /**
+     * @var bool
+     */
     public $timestamps = false;
+    /**
+     * @var array
+     */
     protected $guarded = ['id'];
-    protected $casts = [
-      'image' => ImageCast::class
-    ];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

@@ -48,4 +48,7 @@ interface IProductRepository
      * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
     public function findByCategoryId(int $categoryId);
+
+    public function count(string $columns = '*') : int ;
+
 }

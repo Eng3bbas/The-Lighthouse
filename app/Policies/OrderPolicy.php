@@ -43,7 +43,7 @@ class OrderPolicy
      */
     public function update(User $user, Order $order)
     {
-        return $user->id === $order->user_id || $user->is_admin ;
+        return $this->deleteOrUpdateCondition($user,$order) ;
     }
 
     /**
@@ -55,7 +55,16 @@ class OrderPolicy
      */
     public function delete(User $user, Order $order)
     {
-        return ($user->id === $order->user_id || $user->is_admin) && $order->created_at->diffInDays(now()) <= 0 ;
+        return $this->deleteOrUpdateCondition($user,$order);
     }
 
+    /**
+     * @param User $user
+     * @param Order $order
+     * @return bool
+     */
+    private function deleteOrUpdateCondition(User $user, Order $order) : bool
+    {
+        return  $user->is_admin || ($order->created_at->diffInDays(now()) <= 0 && $order->user_id === $user->id );
+    }
 }

@@ -20,37 +20,6 @@
             </div>
         </div>
 
-        <div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
-            <h4 class="s-text12 p-b-30">
-                Categories
-            </h4>
-
-            <ul>
-                <li class="p-b-9">
-                    <a href="#" class="s-text7">
-                        Men
-                    </a>
-                </li>
-
-                <li class="p-b-9">
-                    <a href="#" class="s-text7">
-                        Women
-                    </a>
-                </li>
-
-                <li class="p-b-9">
-                    <a href="#" class="s-text7">
-                        Dresses
-                    </a>
-                </li>
-
-                <li class="p-b-9">
-                    <a href="#" class="s-text7">
-                        Sunglasses
-                    </a>
-                </li>
-            </ul>
-        </div>
 
         <div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
             <h4 class="s-text12 p-b-30">
@@ -90,12 +59,6 @@
             </h4>
 
             <ul>
-                <li class="p-b-9">
-                    <a href="#" class="s-text7">
-                        Track Order
-                    </a>
-                </li>
-
                 <li class="p-b-9">
                     <a href="#" class="s-text7">
                         Returns
@@ -140,23 +103,23 @@
 
     <div class="t-center p-l-15 p-r-15">
         <a href="#">
-            <img class="h-size2" src="images/icons/paypal.png" alt="IMG-PAYPAL">
+            <img class="h-size2" src="/images/icons/paypal.png" alt="IMG-PAYPAL">
         </a>
 
         <a href="#">
-            <img class="h-size2" src="images/icons/visa.png" alt="IMG-VISA">
+            <img class="h-size2" src="/images/icons/visa.png" alt="IMG-VISA">
         </a>
 
         <a href="#">
-            <img class="h-size2" src="images/icons/mastercard.png" alt="IMG-MASTERCARD">
+            <img class="h-size2" src="/images/icons/mastercard.png" alt="IMG-MASTERCARD">
         </a>
 
         <a href="#">
-            <img class="h-size2" src="images/icons/express.png" alt="IMG-EXPRESS">
+            <img class="h-size2" src="/images/icons/express.png" alt="IMG-EXPRESS">
         </a>
 
         <a href="#">
-            <img class="h-size2" src="images/icons/discover.png" alt="IMG-DISCOVER">
+            <img class="h-size2" src="/images/icons/discover.png" alt="IMG-DISCOVER">
         </a>
 
         <div class="t-center s-text8 p-t-20">

@@ -9,11 +9,9 @@ use Illuminate\Database\Eloquent\Factory;
 
 $factory->define(Order::class, function (Faker $faker) {
     return [
-        'user_id' => app()->runningUnitTests()
-            ?  User::first()->id
-            : factory(User::class)->create()->id,
+        'user_id' => User::count() <= 1 ? \factory(User::class)->create()->id : User::latest()->offset(1)->first()->id ,
         'address' => $faker->address,
         'notes' => $faker->paragraph,
-        'total_money' => $faker->randomNumber(4)
+        'total_money' => $faker->randomNumber(2)
     ];
 });

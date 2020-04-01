@@ -1,11 +1,21 @@
 @extends("layouts.mainApp",['title' => "All Products"])
-@section("styles")
-    <x-styles-loader :styles="['styles/categories','styles/categories_responsive']"></x-styles-loader>
-    @endsection
 @section("content")
-    <div class="row">
-        <div class="col">
-            <x-all-products :products="$products"></x-all-products>
+    <section class="newproduct bgwhite p-t-45 p-b-105">
+        <div class="container">
+            <div class="sec-title p-b-60">
+                <h3 class="m-text5 t-center">
+                    Featured Products
+                </h3>
+            </div>
+            <h2>{{$products->count() . ($products->count() <= 1 ? " Product" : " Products")}} found</h2>
+
+            <!-- Slide2 -->
+            <div class="wrap-slick2">
+                <div class="slick2">
+                    <x-all-products :products="$products"></x-all-products>
+                </div>
+            </div>
+            {{$products->withQueryString()->links()}}
         </div>
-    </div>
+    </section>
 @endsection
