@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="the lighthouse" uuid="20f3675a-cebb-4f71-bda9-f08d9c10e13d">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://ec2-52-87-58-157.compute-1.amazonaws.com:5432/d6prg5gvkko2b8</jdbc-url>
+    </data-source>
+  </component>
+</project>

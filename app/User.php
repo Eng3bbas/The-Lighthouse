@@ -86,7 +86,7 @@ class User extends Authenticatable
 
     public function getIsAdminAttribute() : bool
     {
-        return $this->role === 1;
+        return $this->role == 1 || $this->role == true;
     }
 
     public function products()
