@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Casts\ImageCast;
+use App\Helpers\Models\Transectiable;
 use Illuminate\Database\Eloquent\Model;
 
 

@@ -47,7 +47,7 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         $this->service->create($request);
-        return response()->redirectToRoute('categories.index');
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -69,7 +69,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        return response()->view('categories.edit',['category' => $this->service->show($id)]);
     }
 
     /**

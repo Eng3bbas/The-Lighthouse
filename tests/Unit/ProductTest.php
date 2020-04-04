@@ -10,6 +10,7 @@ use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Arr;
 use Storage;
 use Tests\TestCase;
 use Tests\WithAuthentication;
@@ -90,13 +91,14 @@ class ProductTest extends TestCase
         $this->actingAs($this->user);
         $category = $this->createCategory();
         $product = factory(Product::class)->create(['user_id' => $this->user->id , 'category_id' => $category->id]);
-        $response = $this->put(route('products.update',['id' => $product->id]),[
+        $response = $this->put(route('products.update',['id' => $product->id]),$data = [
             'name' => $this->faker->name,
             'price' => $this->faker->randomNumber(4),
             'category_id' => $category->id,
             'image' => UploadedFile::fake()->image('myimg.png')
         ]);
-        $response->assertRedirect(route("products.index"));
+        $response->assertRedirect(route("dashboard.products"));
+        $this->assertDatabaseHas('products',Arr::except($data,'image'));
     }
 
     public function testCanDeleteProduct()
@@ -106,7 +108,7 @@ class ProductTest extends TestCase
         $category = $this->createCategory();
         $product = factory(Product::class)->create(['user_id' => $this->user->id , 'category_id' => $category->id]);
         $response = $this->delete(route("products.destroy",['id' => $product->id]));
-        $response->assertRedirect(route("products.index"));
+        $response->assertRedirect(route("dashboard.products"));
         $this->assertDatabaseMissing('products',[
             'id' => $product->id,
             'name' => $product->name

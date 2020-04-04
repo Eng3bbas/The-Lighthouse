@@ -35,6 +35,7 @@ Route::name('products.')->prefix('products')->group(function (){
 });
 Route::name("orders.")->prefix("orders")->middleware("auth")->group(function (){
     Route::name("index")->get("/",'OrderController@index');
+    Route::get('edit/{id}','OrderController@edit')->name('edit');
     Route::get("show/{id}",'OrderController@show')->name('show');
     Route::post('store','OrderController@store')->name('store');
     Route::put("update/{id}",'OrderController@update')->name("update");
@@ -43,4 +44,13 @@ Route::name("orders.")->prefix("orders")->middleware("auth")->group(function (){
 Route::prefix('dashboard')->middleware(['auth','admin'])->name('dashboard.')->group(function(){
     Route::get('main','DashboardStaticsController')->name('index');
     Route::get('products','ProductDashboardIndex')->name('products');
+});
+Route::prefix('users')->middleware(['auth','admin'])->name('users.')->group(function (){
+    Route::get('/','UserController@index')->name('index');
+    Route::get('create','UserController@create')->name('create');
+    Route::post('store','UserController@store')->name('store');
+    Route::get('edit/{id}','UserController@edit')->name('edit');
+    Route::put('update/{id}','UserController@update')->name('update');
+    Route::delete("destroy/{id}",'UserController@destroy')->name("destroy");
+
 });

@@ -22,7 +22,7 @@
                 <tbody>
                 @forelse($orders as $order)
                 <tr>
-                    <td class="serial">{{$order->id}}.</td>
+                    <td class="serial"><a href="{{route('orders.show',['id' => $order->id])}}">{{$order->id}}.</a> </td>
                     <td class="avatar">
                         <div class="round-img">
                             <a href="#"><img class="rounded-circle" src="/storage/{{$order->user->avatar}}" alt=""></a>
@@ -39,7 +39,7 @@
                             @csrf
                             @method('delete')
                             <button type="submit" class="btn btn-danger">Delete</button>
-{{--                            <a href="{{route('orders.edit')}}" class="btn btn-success">Edit</a>--}}
+                            <a href="{{route('orders.edit',['id' => $order->id])}}" class="btn btn-success">Edit</a>
                         </form>
                     </td>
                     @endupdate_delete_order
@@ -49,7 +49,7 @@
                 @endforelse
                 </tbody>
             </table>
-            {{$products->links()}}
+            {{$orders->links()}}
             <div class="clearfix"></div>
         </div> <!-- /.table-stats -->
     </div>

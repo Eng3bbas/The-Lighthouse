@@ -63,7 +63,7 @@ class OrderTest extends TestCase
     public function testOrdersAsUser()
     {
         $this->setAuthentication();
-        factory(Order::class,10)->create();
+        factory(Order::class,10)->create(['user_id' => $this->user->id]);
         $response = $this->get(route("orders.index"));
         $response->assertDontSee('No Orders');
     }
@@ -91,9 +91,9 @@ class OrderTest extends TestCase
     public function testDeletingAnOrderAsUser()
     {
         $this->setAuthentication();
-        $order = factory(Order::class)->create();
+        $order = factory(Order::class)->create(['user_id' => $this->user->id]);
         $response = $this->delete(route("orders.destroy",['id' => $order->id]));
-        $response->assertRedirect('/');
+        $response->assertRedirect();
     }
     public function testDeletingAnOrderAsAdmin()
     {

@@ -29,16 +29,6 @@ class OrderController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  OrderRequest  $request
@@ -69,7 +59,9 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $order = $this->service->show($id);
+        abort_if(!auth()->user()->can('update',$order),403,'Your limit to update the order has ended or you are not authorized');
+        return response()->view('orders.edit',compact('order'));
     }
 
     /**
@@ -82,7 +74,7 @@ class OrderController extends Controller
     public function update(OrderRequest $request, $id)
     {
         $this->service->update($id,$request->only(['address','notes']));
-        return  redirect('/');
+        return  redirect()->route('orders.index');
     }
 
     /**
@@ -94,6 +86,6 @@ class OrderController extends Controller
     public function destroy($id)
     {
         $this->service->delete($id);
-        return redirect('/');
+        return redirect()->back();
     }
 }

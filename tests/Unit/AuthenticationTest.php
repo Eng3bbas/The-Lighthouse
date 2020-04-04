@@ -30,7 +30,7 @@ class AuthenticationTest extends TestCase
             'password_confirmation' => 'password',
             'avatar' => UploadedFile::fake()->image('Image.jpg')
         ]);
-        $response->assertRedirect('/home');
+        $response->assertRedirect('/');
     }
 
     public function testLogin()
@@ -44,7 +44,7 @@ class AuthenticationTest extends TestCase
             'email' => $data['email'],
             'password' => $data['password']
         ]);
-        $response->assertRedirect('/home');
+        $response->assertRedirect('/');
     }
 
     public function testLogout()

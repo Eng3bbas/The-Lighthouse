@@ -29,7 +29,7 @@ class LoginController extends Controller
     protected function redirectTo()
     {
         return $this->guard()->user()->is_admin ?
-            route('dashboard.index') : '/';
+            route('dashboard.index') : route('orders.index');
     }
 
     /**

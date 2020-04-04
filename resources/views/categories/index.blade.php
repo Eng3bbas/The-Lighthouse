@@ -15,7 +15,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($categories as $category)
+                @forelse($categories as $category)
                     <tr>
                         <th scope="row">{{$category->id}}</th>
                         <td>{{$category->name}}</td>
@@ -28,7 +28,9 @@
                             </form>
                         </td>
                     </tr>
-                @endforeach
+                    @empty
+                    <h1>No Categories</h1>
+                @endforelse
                 </tbody>
             </table>
         </div>

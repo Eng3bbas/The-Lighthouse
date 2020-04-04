@@ -7,6 +7,7 @@ namespace App\Repositories;
 use App\Order;
 use DB;
 use Exception;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class OrderRepository implements IOrderRepository
 {
@@ -39,13 +40,16 @@ class OrderRepository implements IOrderRepository
                     'order_id' => $order->id ,
                     'product_id' => $product['id'],
                     'quantity' => $product['quantity']
-                ])->save();
+                ])->saveOrFail();
             }
             DB::commit();
             return $order;
         }
         catch (Exception $exception){
             DB::rollBack();
+            if (request()->acceptsJson()){
+                throw new HttpException(500,$exception->getMessage());
+            }
             abort(500,"Error occurred: {$exception->getMessage()}" );
         }
     }

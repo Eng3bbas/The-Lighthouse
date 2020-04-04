@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Casts\ImageCast;
+use App\Helpers\Models\Transectiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -77,7 +78,7 @@ class User extends Authenticatable
         'id' => 'int',
     ];
 
-    public function setPasswordAttribute(string $password = '')
+    public function setPasswordAttribute(?string $password = null)
     {
         if (!empty($password))
             $this->attributes['password'] = bcrypt($password);

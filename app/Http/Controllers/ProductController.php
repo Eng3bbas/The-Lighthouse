@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
+use App\Services\CategoryService;
 use App\Services\ProductService;
 
 class ProductController extends Controller
@@ -28,11 +29,12 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      *
+     * @param CategoryService $categoryService
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create()
+    public function create(CategoryService $categoryService)
     {
-        $categories = app('App\Services\CategoryService')->all();
+        $categories = $categoryService->all();
         return view('products.create',compact('categories'));
     }
 
@@ -65,12 +67,13 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     * @param CategoryService $categoryService
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id,CategoryService $categoryService)
     {
-       $categories = app('App\Services\CategoryService')->all();
+       $categories = $categoryService->all();
        $product = $this->service->show($id);
        return response()->view('products.edit',compact('categories','product'));
     }

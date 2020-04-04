@@ -21,15 +21,17 @@
 
             <div class="user-area dropdown float-right">
                 <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="user-avatar rounded-circle" src="/storage/{{auth()->user()->avatar}}" alt="User Avatar">
+                    <img class="user-avatar rounded-circle" src="/storage/{{auth()->user()->avatar ?? env("NO_IMAGE_NAME")}}" alt="User Avatar">
                 </a>
 
                 <div class="user-menu dropdown-menu">
                     <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
 
                     <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
-
-                    <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
+                    <form action="{{route('logout')}}" method="post">
+                        @csrf
+                        <button class="nav-link" type="submit"><i class="fa fa-power -off"></i>Logout</button>
+                    </form>
                 </div>
             </div>
 

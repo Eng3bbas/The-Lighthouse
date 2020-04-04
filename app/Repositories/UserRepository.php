@@ -32,7 +32,7 @@ class UserRepository implements IUserRepository
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => $data['password'],
-                'avatar' => $data['avatar'] ?? env("NO_IMAGE_NAME")
+                'avatar' => $data['avatar']
             ]);
             DB::commit();
             return $user;
@@ -40,12 +40,28 @@ class UserRepository implements IUserRepository
         catch (Throwable $exception){
             if (isset($data['avatar']))
                 Storage::delete($data['avatar']);
-            DB::rollBack();
             abort(500,$exception->getMessage());
         }
     }
     public function update(int $id, array $data): bool
     {
         return $this->model->findOrFail($id)->update($data);
+    }
+    public function paginated(int $perPage = 10)
+    {
+        return $this->model->latest('id')->withCount('orders')->paginate($perPage);
+    }
+    public function findOrFail(int $id, array $columns = ['*']) : User
+    {
+        return $this->model->findOrFail($id,$columns);
+    }
+
+    /**
+     * @param int $id
+     * @throws \Exception
+     */
+    public function delete(int $id)
+    {
+        $this->findOrFail($id)->delete();
     }
 }

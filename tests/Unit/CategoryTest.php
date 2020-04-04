@@ -23,13 +23,14 @@ class CategoryTest extends TestCase
 
     public function testIndexWithoutCategories()
     {
+        $this->setAuthentication(true);
         $this->get(route(self::CATEGORIES_INDEX))->assertSee('No Categories');
     }
 
     public function testCanCreateACategory()
     {
         $this->setAuthentication(true);
-        $response = $this->post(route('categories.store'),$data = [
+        $response = $this->post('categories/store',$data = [
             'name' => $this->faker->name
         ]);
         $response->assertRedirect(route(self::CATEGORIES_INDEX));

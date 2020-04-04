@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Casts\ImageCast;
+
 use Illuminate\Database\Eloquent\Model;
 
 
@@ -41,6 +41,7 @@ class Product extends Model
     protected $guarded = ['id'];
     protected $casts = [
         'price' => 'int',
+        'created_at' => 'datetime'
     ];
     public function category()
     {
@@ -56,4 +57,5 @@ class Product extends Model
     {
         return $this->belongsToMany(Order::class);
     }
+
 }

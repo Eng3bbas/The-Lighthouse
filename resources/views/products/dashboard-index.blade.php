@@ -26,7 +26,7 @@
                         <td><span class="count">{{$product->price}}</span></td>
                         <td>{{$product->category->name}}</td>
                         <td>{{$product->user->name}}</td>
-                        <td>{{$product->created_at}}</td>
+                        <td>{{$product->created_at->format("Y/m/d g:i A")}}</td>
                         <td>
                             <form action="{{route('products.destroy',['id' => $product->id])}}" method="post">
                                 @csrf

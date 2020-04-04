@@ -37,7 +37,18 @@
                         <li>
                             <a href="/">Home</a>
                         </li>
+                        @auth
+                            <a href="{{route(auth()->user()->is_admin ? 'dashboard.index' : 'orders.index')}}">Dashboard</a>
+                        @endauth
+                        @guest
+                            <li>
+                                <a href="{{route('login')}}">Login</a>
+                            </li>
+                            <li>
+                                <a href="{{route('register')}}">Register</a>
+                            </li>
 
+                        @endguest
                         <li>
                             <a href="{{route("products.index")}}">Shop</a>
                         </li>

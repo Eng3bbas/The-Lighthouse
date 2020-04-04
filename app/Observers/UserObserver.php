@@ -4,7 +4,6 @@ namespace App\Observers;
 
 use App\Jobs\DeleteImage;
 use App\User;
-use Storage;
 
 class UserObserver
 {
@@ -22,6 +21,11 @@ class UserObserver
            DeleteImage::dispatchNow($originalAvatar);
     }
 
+    public function deleting(User $user)
+    {
+        if ($user->has("products"))
+            DeleteImage::dispatchNow($user->products()->pluck('image')->all());
+    }
     /**
      * Handle the user "deleted" event.
      *
@@ -33,7 +37,6 @@ class UserObserver
         $originalAvatar = $user->getOriginal('avatar');
         if ($originalAvatar !== env('NO_IMAGE_NAME') || $originalAvatar != null)
             DeleteImage::dispatchNow($originalAvatar);
-        DeleteImage::dispatchNow($user->products()->pluck('image')->all());
     }
 
 }

@@ -10,13 +10,10 @@ use Storage;
 
 class ProductService
 {
-    use ServiceHelpers,Countable;
+    use ServiceHelpers,Countable,Uploadable;
+    private const UPLOAD_DIR = "products";
     private IProductRepository $repository;
 
-    private function uploadProductImage(UploadedFile $file) : string
-    {
-        return $file->hashName("products/");
-    }
     public function __construct(IProductRepository $repository)
     {
         $this->repository = $repository;
@@ -35,7 +32,7 @@ class ProductService
         $data['image'] = env("NO_IMAGE_NAME");
         $data['user_id'] = auth()->id();
         if ($request->hasFile('image'))
-            $data['image'] = $this->uploadProductImage($request->file('image'));
+            $data['image'] = $this->uploadImage($request->file('image'),self::UPLOAD_DIR);
         return $this->repository->create($data);
     }
 
@@ -51,7 +48,7 @@ class ProductService
         abort_if(!auth()->user()->can("update",$this->repository->show($id)),403,'You are not an admin');
         $data = $request->only(['name','price','category_id']);
         if ($request->hasFile('image'))
-            $data['image'] = $this->uploadProductImage($request->file('image'));
+            $data['image'] = $this->uploadImage($request->file('image'),self::UPLOAD_DIR);
         return $this->repository->update($id,$data);
     }
 

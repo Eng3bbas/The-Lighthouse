@@ -10,25 +10,30 @@ use Illuminate\Support\Str;
 
 class UserService
 {
-    use Countable;
+    use Countable,Uploadable,ServiceHelpers;
     private IUserRepository $repository;
+
     public function __construct(IUserRepository $repository)
     {
         $this->repository = $repository;
     }
 
-    public function register(array $data) : ?User
+    public function create(array $data) : ?User
     {
-        if (request()->hasFile('avatar')){
-            $file = request()->file('avatar');
-            $data['avatar'] = $file->hashName("avatars/" . Str::slug($data['name']) ."/");
-        }
+        $data['avatar'] = request()->hasFile('avatar') ?
+            $this->uploadImage(request()->file('avatar'),"avatars/" . Str::slug($data['name'])) :
+            env("NO_IMAGE_NAME");
         return $this->repository->create($data);
     }
 
-    public function update(int $id , array $data):void
+    /**
+     * @param int $id
+     * @param array $data
+     * @return void
+     */
+    public function update($id , array $data):void
     {
-        abort_if(!auth()->user()->is_admin,403,'Not Authorized to update this user' );
+        $this->idValidator($id);
         if (request()->hasFile('avatar')){
             $file = request()->file('avatar');
             $data['avatar'] = $file->hashName("avatars/" . Str::slug($data['name']) ."/");
@@ -36,4 +41,20 @@ class UserService
         $this->repository->update($id,$data);
     }
 
+    public function paginated(int $perPage = 10)
+    {
+        return $this->repository->paginated($perPage);
+    }
+
+    public function get(int $id) : User
+    {
+        $this->idValidator($id);
+        return $this->repository->findOrFail($id);
+    }
+
+    public function delete($id)
+    {
+        $this->idValidator($id);
+        $this->repository->delete($id);
+    }
 }

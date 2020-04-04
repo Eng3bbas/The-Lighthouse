@@ -24,7 +24,7 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required','string','unique:categories'],
+            'name' => ['required',"string" , $this->isMethod('put') ? "unique:categories" : ''],
             'image' => ['nullable','image','mimes:jpg,png,jpeg']
         ];
     }

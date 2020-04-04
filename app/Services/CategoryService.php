@@ -10,17 +10,15 @@ use Illuminate\Http\UploadedFile;
 
 class CategoryService
 {
-    use ServiceHelpers,Countable;
+    use ServiceHelpers, Countable, Uploadable;
+    private const UPLOAD_DIR = "categories";
     private ICategoryRepository $repository;
+
     public function __construct(ICategoryRepository $repository)
     {
         $this->repository = $repository;
     }
 
-    private function uploadCategoryImage(UploadedFile $file)
-    {
-        return $file->hashName("categories/");
-    }
     public function all()
     {
         return $this->repository->index();
@@ -30,7 +28,7 @@ class CategoryService
     {
         $data = $request->only('name');
         if ($request->hasFile('image'))
-            $data['image'] = $this->uploadCategoryImage($request->file('image'));
+            $data['image'] = $this->uploadImage($request->file('image'), self::UPLOAD_DIR);
         return $this->repository->create($data);
     }
 
@@ -40,23 +38,21 @@ class CategoryService
         return $this->repository->findOrFail($id);
     }
 
-    public function update($id , Request $request)
+    public function update($id, Request $request)
     {
         $this->idValidator($id);
         $data = $request->only('name');
         if ($request->hasFile('image'))
-            $data['image'] = $this->uploadCategoryImage($request->file('image'));
-        return $this->repository->update($id,$data);
+            $data['image'] = $this->uploadImage($request->file('image'), self::UPLOAD_DIR);
+        return $this->repository->update($id, $data);
     }
 
     public function delete($id)
     {
         $this->idValidator($id);
-        abort_if(!auth()->user()->is_admin,403);
+        abort_if(!auth()->user()->is_admin, 403);
         $this->repository->delete($id);
     }
-
-
 
 
 }

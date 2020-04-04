@@ -21,6 +21,11 @@
                 <a href="{{route('categories.index')}}"><i class="menu-icon fa fa-laptop"></i>Categories </a>
                 </li>
                 @endadmin
+                @admin
+                <li @active(route('users.index')) class="active" @endactive>
+                <a href="{{route('users.index')}}"><i class="menu-icon fa fa-laptop"></i>Users </a>
+                </li>
+                @endadmin
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
